@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 public class CustomerController {
     private CustomerServices customerServices;
 
-    @PostMapping("registration")
+    @PostMapping({"registration","/"})
     public void saveCustomer(@RequestBody @Validated Customer user) throws Exception {
         customerServices.saveCustomer(user);
     }
@@ -20,6 +20,11 @@ public class CustomerController {
     @PostMapping("authorization")
     public String authorization(@RequestBody Customer customer){
         System.out.println(customerServices.authorization(customer));
-        return new Boolean(customerServices.authorization(customer)).toString();
+        return Boolean.toString(customerServices.authorization(customer));
+    }
+
+    @GetMapping("customer/{id}")
+    public Customer getCustomer(@PathVariable String id){
+        return customerServices.getCustomerById(Integer.parseInt(id));
     }
 }

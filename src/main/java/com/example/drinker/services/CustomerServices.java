@@ -21,4 +21,8 @@ public class CustomerServices {
     public boolean authorization(Customer customer){
         return customerDAO.findByLoginAndAndPassword(customer.getLogin(), customer.getPassword()) != null;
     }
+
+    public Customer getCustomerById(int id){
+       return customerDAO.findById(id).get();
+    }
 }
