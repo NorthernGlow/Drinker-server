@@ -13,8 +13,8 @@ public class CustomerController {
     private CustomerServices customerServices;
 
     @PostMapping({"registration","/"})
-    public void saveCustomer(@RequestBody @Validated Customer user) throws Exception {
-        customerServices.saveCustomer(user);
+    public void saveCustomer(@RequestBody @Validated Customer customer) throws Exception {
+        customerServices.saveCustomer(customer);
     }
 
     @PostMapping("authorization")
