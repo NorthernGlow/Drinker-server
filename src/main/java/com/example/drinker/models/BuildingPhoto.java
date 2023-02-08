@@ -1,9 +1,6 @@
 package com.example.drinker.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -20,6 +17,14 @@ public class BuildingPhoto {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private int buildingId;
     private String srcPhoto;
+
+//    @ManyToOne(optional = false)
+//    @JoinColumn(name = "building_id")
+//    private Building building;
+
+    public BuildingPhoto(String srcPhoto) {
+        this.srcPhoto = srcPhoto;
+    }
+
 }

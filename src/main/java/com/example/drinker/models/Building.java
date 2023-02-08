@@ -6,6 +6,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
@@ -16,13 +19,25 @@ public class Building {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
     private int customerId;
     private String name;
     private String averageCheck;
-//    private int teg;
-//    private int specificsId;
-//    private int locationId;
 
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "teg_id", referencedColumnName = "id")
+    private Teg teg;
 
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "specifics_id", referencedColumnName = "id")
+    private Specifics specifics;
+
+    @OneToOne(cascade = CascadeType.ALL, optional = false)
+    @JoinColumn(name = "location_id", referencedColumnName = "id")
+    private Location location;
+
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "photo_id")
+    private List<BuildingPhoto> photos = new ArrayList<>();
 
 }
