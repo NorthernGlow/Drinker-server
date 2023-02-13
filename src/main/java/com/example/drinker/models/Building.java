@@ -1,10 +1,7 @@
 package com.example.drinker.models;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,6 +11,7 @@ import java.util.List;
 @Getter
 @Setter
 @Entity
+@ToString
 public class Building {
 
     @Id
@@ -26,18 +24,22 @@ public class Building {
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "teg_id", referencedColumnName = "id")
+    @ToString.Exclude
     private Teg teg;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "specifics_id", referencedColumnName = "id")
+    @ToString.Exclude
     private Specifics specifics;
 
     @OneToOne(cascade = CascadeType.ALL, optional = false)
-    @JoinColumn(name = "location_id", referencedColumnName = "id")
+    @JoinColumn(name = "location_id")
+    @ToString.Exclude
     private Location location;
 
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "photo_id")
-    private List<BuildingPhoto> photos = new ArrayList<>();
+    
+//    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+//    @JoinColumn(name = "photo_id")
+//    private List<BuildingPhoto> photos = new ArrayList<>();
 
 }

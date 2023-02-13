@@ -10,7 +10,5 @@ import java.util.List;
 @Repository
 public interface BuildingDAO extends JpaRepository<Building,Integer> {
 
-    @Query("select b from Building b join Location l on l.id = b.location_id")
-    List<Building> findAllMy();
 
 }

@@ -1,23 +1,24 @@
 package com.example.drinker.models;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
 @Entity
+@ToString
 public class Teg {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    @OneToOne(mappedBy = "teg")
+
+    @OneToOne(mappedBy = "teg",cascade = CascadeType.ALL)
+    @ToString.Exclude
     private Building building;
+
     private boolean forWedding;
     private boolean forBirthDay;
     private boolean forParty;
@@ -27,4 +28,5 @@ public class Teg {
     private boolean forChildren;
     private boolean forFamily;
     private boolean forFriends;
+
 }

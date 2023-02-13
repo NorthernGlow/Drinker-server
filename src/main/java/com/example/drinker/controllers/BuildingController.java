@@ -1,7 +1,6 @@
 package com.example.drinker.controllers;
 
 import com.example.drinker.models.Building;
-import com.example.drinker.models.dto.BuildingDTO;
 import com.example.drinker.services.BuildingService;
 import lombok.AllArgsConstructor;
 import org.springframework.validation.annotation.Validated;
@@ -22,12 +21,12 @@ public class BuildingController {
     }
 
     @GetMapping("customer/drinks/{id}")
-    public Building getBuild(@PathVariable String id){
-        return buildingService.getBuild(Integer.parseInt(id));
+    public Building getBuild(@PathVariable int id){
+        return buildingService.getBuild(id);
     }
 
     @GetMapping("customer/drinks/all")
-    public List<BuildingDTO> getAllBuilding(){
+    public List<Building> getAllBuilding(){
         return buildingService.getAllBuild();
     }
 }

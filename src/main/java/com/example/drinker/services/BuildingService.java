@@ -2,8 +2,6 @@ package com.example.drinker.services;
 
 import com.example.drinker.dao.BuildingDAO;
 import com.example.drinker.models.Building;
-import com.example.drinker.models.Customer;
-import com.example.drinker.models.dto.BuildingDTO;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -29,7 +27,8 @@ public class BuildingService {
         return buildingDAO.findById(id).get();
     }
 
-    public List<BuildingDTO> getAllBuild(){
-        return buildingDAO.findAllMy().stream().map(BuildingDTO::new).collect(Collectors.toList());
+    public List<Building> getAllBuild(){
+        return new ArrayList<>(buildingDAO.findAll());
     }
+
 }
