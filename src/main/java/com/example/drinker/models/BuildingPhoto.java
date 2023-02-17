@@ -19,12 +19,9 @@ public class BuildingPhoto {
     private int id;
     private String srcPhoto;
 
-//    @ManyToOne(optional = false)
-//    @JoinColumn(name = "building_id")
-//    private Building building;
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "building_id")
+    private Building building;
 
-    public BuildingPhoto(String srcPhoto) {
-        this.srcPhoto = srcPhoto;
-    }
 
 }

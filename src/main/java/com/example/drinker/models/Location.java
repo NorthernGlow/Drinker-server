@@ -1,5 +1,6 @@
 package com.example.drinker.models;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -23,6 +24,5 @@ public class Location {
     private String region;
     private String street;
     private String buildingNumber;
-
 
 }

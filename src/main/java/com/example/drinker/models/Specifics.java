@@ -1,5 +1,6 @@
 package com.example.drinker.models;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -24,5 +25,8 @@ public class Specifics {
     private boolean liveMusic;
     private boolean withAnimal;
 
-
+//    @JsonManagedReference
+//    public Building getBuilding() {
+//        return building;
+//    }
 }
