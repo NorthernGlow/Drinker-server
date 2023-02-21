@@ -9,5 +9,5 @@ import java.util.List;
 
 @Repository
 public interface BuildingDAO extends JpaRepository<Building,Integer> {
-
+       List<Building> findByCustomerId(int id);
 }

@@ -23,22 +23,18 @@ public class BuildingController {
     }
 
     @GetMapping("customer/drinks/{id}")
-    public List<Object> getBuild(@PathVariable int id){
+    public List<BuildingDTO> getBuildById(@PathVariable int id) {
+        return buildingService.getBuildById(id);
+    }
 
-        BuildingDTO build = buildingService.getBuild(id);
-        List<Object> objects = new ArrayList<>();
-        objects.add(build);
-        objects.add(build.getLocation());
-        objects.add(build.getSpecifics());
-        objects.add(build.getTeg());
-        System.out.println(objects);
-        return objects;
+    @GetMapping("customer/{id}/allBuilding")
+    public List<BuildingDTO> getBuildByCustomerId(@PathVariable int id) {
+        return buildingService.getBuildByCustomerId(id);
     }
 
 
-
     @GetMapping("customer/drinks/all")
-    public List<BuildingDTO> getAllBuilding(){
+    public List<BuildingDTO> getAllBuilding() {
         return buildingService.getAllBuild();
     }
 }

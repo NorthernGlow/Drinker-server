@@ -19,8 +19,7 @@ public class CustomerController {
 
     @PostMapping("authorization")
     public String authorization(@RequestBody Customer customer){
-        System.out.println(customerServices.authorization(customer));
-        return Boolean.toString(customerServices.authorization(customer));
+        return customerServices.authorization(customer);
     }
 
     @GetMapping("customer/{id}")

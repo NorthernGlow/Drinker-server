@@ -25,11 +25,12 @@ public class BuildingService {
         }
     }
 
-    public BuildingDTO getBuild(int id){
-        Building building = buildingDAO.findById(id).get();
-        System.out.println(buildingDAO.findById(id));
-        System.out.println(building);
-        return new BuildingDTO(building);
+    public List<BuildingDTO> getBuildById(int id){
+        return buildingDAO.findById(id).stream().map(BuildingDTO::new).collect(Collectors.toList());
+    }
+
+    public List<BuildingDTO> getBuildByCustomerId(int id){
+        return buildingDAO.findByCustomerId(id).stream().map(BuildingDTO::new).collect(Collectors.toList());
     }
 
     public List<BuildingDTO> getAllBuild(){

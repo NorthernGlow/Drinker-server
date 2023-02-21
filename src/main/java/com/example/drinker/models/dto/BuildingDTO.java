@@ -24,17 +24,14 @@ public class BuildingDTO {
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "teg_id", referencedColumnName = "id")
-    @ToString.Exclude
     private Teg teg;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "specifics_id", referencedColumnName = "id")
-    @ToString.Exclude
     private Specifics specifics;
 
     @OneToOne(cascade = CascadeType.ALL, optional = false)
     @JoinColumn(name = "location_id", referencedColumnName = "id")
-    @ToString.Exclude
     private Location location;
 
     public BuildingDTO(Building building){

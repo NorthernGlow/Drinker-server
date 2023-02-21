@@ -11,18 +11,22 @@ public class CustomerServices {
     private CustomerDAO customerDAO;
 
     public void saveCustomer(Customer customer) throws Exception {
-        if (customer != null){
+        if (customer != null) {
             customerDAO.save(customer);
-        }else {
+        } else {
             throw new Exception();
         }
     }
 
-    public boolean authorization(Customer customer){
-        return customerDAO.findByLoginAndAndPassword(customer.getLogin(), customer.getPassword()) != null;
+    public String authorization(Customer customer) {
+        Customer user = customerDAO.findByLoginAndAndPassword(customer.getLogin(), customer.getPassword());
+        if (user != null) {
+            return Integer.toString(user.getId());
+        }
+        return "false";
     }
 
-    public Customer getCustomerById(int id){
-       return customerDAO.findById(id).get();
+    public Customer getCustomerById(int id) {
+        return customerDAO.findById(id).get();
     }
 }
