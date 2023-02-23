@@ -29,4 +29,6 @@ public class Customer {
         this.login = login;
         this.password = password;
     }
+
+
 }

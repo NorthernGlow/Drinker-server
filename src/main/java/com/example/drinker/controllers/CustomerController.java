@@ -12,18 +12,28 @@ import org.springframework.web.bind.annotation.*;
 public class CustomerController {
     private CustomerServices customerServices;
 
-    @PostMapping({"registration","/"})
+    @PostMapping({"registration", "/"})
     public void saveCustomer(@RequestBody @Validated Customer customer) throws Exception {
         customerServices.saveCustomer(customer);
     }
 
     @PostMapping("authorization")
-    public String authorization(@RequestBody Customer customer){
+    public String authorization(@RequestBody Customer customer) {
         return customerServices.authorization(customer);
     }
 
     @GetMapping("customer/{id}")
-    public Customer getCustomer(@PathVariable String id){
-        return customerServices.getCustomerById(Integer.parseInt(id));
+    public Customer getCustomer(@PathVariable int id) {
+        return customerServices.getCustomerById(id);
+    }
+
+    @PutMapping("customer/{id}")
+    public void addMainPhoto(@PathVariable int id, @RequestBody String photo) {
+        customerServices.addMainPhoto(id, photo);
+    }
+
+    @PutMapping("customer/{id}/update")
+    public void updateCustomer(@PathVariable int id, @RequestBody Customer customer) {
+        customerServices.updateCustomer(id,customer);
     }
 }
