@@ -30,5 +30,8 @@ public class Customer {
         this.password = password;
     }
 
-
+    public Customer(String name, String surname) {
+        this.name = name;
+        this.surname = surname;
+    }
 }
