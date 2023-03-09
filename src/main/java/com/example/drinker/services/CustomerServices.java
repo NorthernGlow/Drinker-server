@@ -48,8 +48,8 @@ public class CustomerServices {
         Customer c = customerDAO.findById(id).get();
         c.setName(customer.getName());
         c.setSurname(customer.getSurname());
-        c.setPhoto(customer.getPhoto());
-        c.setEmail(customer.getEmail());
+//        c.setPhoto(customer.getPhoto());
+//        c.setEmail(customer.getEmail());
         customerDAO.save(c);
     }
 }

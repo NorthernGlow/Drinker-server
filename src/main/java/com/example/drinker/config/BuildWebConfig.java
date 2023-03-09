@@ -9,13 +9,12 @@ import java.io.File;
 
 @EnableWebMvc
 @Configuration
-public class WebConfig implements WebMvcConfigurer {
-
+public class BuildWebConfig implements WebMvcConfigurer {
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        String path = "file:///" + System.getProperty("user.home") + File.separator + "IdeaProjects" + File.separator + "Drinker" + File.separator + "src" + File.separator + "photo" + File.separator;
+        String path = "file:///" + System.getProperty("user.home") + File.separator + "IdeaProjects" + File.separator + "Drinker" + File.separator + "src" + File.separator + "buildPhoto" + File.separator;
         registry
-                .addResourceHandler("photo/**")
+                .addResourceHandler("buildPhoto/**")
                 .addResourceLocations(path);
     }
 }

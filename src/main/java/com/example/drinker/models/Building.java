@@ -3,9 +3,11 @@ package com.example.drinker.models;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.*;
+import org.springframework.boot.context.properties.bind.DefaultValue;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -22,6 +24,10 @@ public class Building {
     private int customerId;
     private String name;
     private String averageCheck;
+    private String schedule;
+    private String phone;
+    private String mainPhoto = "";
+    private String rating = "0";
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "teg_id", referencedColumnName = "id")
@@ -38,12 +44,23 @@ public class Building {
 //    @ToString.Exclude
     private Location location;
 
-//    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-//    @JoinColumn(name = "photo_id")
-////    @ToString.Exclude
-//    private List<BuildingPhoto> photos = new ArrayList<>();
+    @OneToMany(mappedBy = "building",cascade = CascadeType.ALL)
+    private List<BuildingPhoto> photos;
 
-//
+    public Building(int customerId, String name, String averageCheck, String schedule, String phone, Teg teg, Specifics specifics, Location location) {
+        this.customerId = customerId;
+        this.name = name;
+        this.averageCheck = averageCheck;
+        this.schedule = schedule;
+        this.phone = phone;
+        this.teg = teg;
+        this.specifics = specifics;
+        this.location = location;
+    }
+
+
+
+    //
 //
 //    @JsonBackReference
 //    public List<BuildingPhoto> getPhotos() {

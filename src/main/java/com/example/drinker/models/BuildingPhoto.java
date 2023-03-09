@@ -19,9 +19,10 @@ public class BuildingPhoto {
     private int id;
     private String srcPhoto;
 
-    @ManyToOne(optional = false)
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "building_id")
     private Building building;
+
 
 
 }
