@@ -15,20 +15,21 @@ import java.util.List;
 public class CustomerServices {
     private CustomerDAO customerDAO;
 
-    public void saveCustomer(Customer customer) throws Exception {
+    public int saveCustomer(Customer customer) throws Exception {
         if (customer != null) {
             customerDAO.save(customer);
+            return customer.getId();
         } else {
             throw new Exception();
         }
     }
 
-    public String authorization(Customer customer) {
+    public int authorization(Customer customer) {
         Customer user = customerDAO.findByLoginAndAndPassword(customer.getLogin(), customer.getPassword());
         if (user != null) {
-            return Integer.toString(user.getId());
+            return user.getId();
         }
-        return "false";
+        return 0;
     }
 
     public Customer getCustomerById(int id) {

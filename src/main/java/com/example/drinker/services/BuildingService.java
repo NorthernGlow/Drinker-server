@@ -22,9 +22,10 @@ public class BuildingService {
 
     private BuildingDAO buildingDAO;
 
-    public void saveBuilding(Building building) throws Exception {
+    public int saveBuilding(Building building) throws Exception {
         if (building != null){
             buildingDAO.save(building);
+            return building.getId();
         }else {
             throw new Exception();
         }

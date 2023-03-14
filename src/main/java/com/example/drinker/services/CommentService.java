@@ -24,4 +24,15 @@ public class CommentService {
     public List<Comment> getAllCommentAboutBuild(int id){
       return commentDAO.findByBuildingId(id);
     }
+
+    public void likes(int id, int like){
+        Comment comment = commentDAO.findById(id).get();
+        comment.setLikes(like);
+        commentDAO.save(comment);
+    }
+    public void dislike(int commentId, int dislike){
+        Comment comment = commentDAO.findById(commentId).get();
+        comment.setDislikes(dislike);
+        commentDAO.save(comment);
+    }
 }

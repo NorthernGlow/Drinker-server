@@ -18,8 +18,17 @@ public class CommentController {
         commentService.saveComment(comment);
     }
 
-    @PostMapping("allComments/{id}")
+    @GetMapping("allComments/{id}")
     public List<Comment> getAllCommentsAboutBuild(@PathVariable int id){
         return commentService.getAllCommentAboutBuild(id);
+    }
+
+    @PutMapping("comment/{commentId}/like")
+    public void like(@PathVariable int commentId, @RequestBody int like){
+        commentService.likes(commentId,like);
+    }
+    @PutMapping("comment/{commentId}/dislike")
+    public void dislike(@PathVariable int commentId, @RequestBody int dislike){
+        commentService.dislike(commentId,dislike);
     }
 }

@@ -16,27 +16,27 @@ public class CustomerController {
     private CustomerServices customerServices;
 
     @PostMapping({"registration", "/"})
-    public void saveCustomer(@RequestBody @Validated Customer customer) throws Exception {
-        customerServices.saveCustomer(customer);
+    public int saveCustomer(@RequestBody @Validated Customer customer) throws Exception {
+       return customerServices.saveCustomer(customer);
     }
 
     @PostMapping("authorization")
-    public String authorization(@RequestBody Customer customer) {
+    public int authorization(@RequestBody Customer customer) {
         return customerServices.authorization(customer);
     }
 
-    @GetMapping("customer/{id}")
-    public Customer getCustomer(@PathVariable int id) {
-        return customerServices.getCustomerById(id);
+    @GetMapping("customer/{customerId}")
+    public Customer getCustomer(@PathVariable int customerId) {
+        return customerServices.getCustomerById(customerId);
     }
 
-    @PutMapping("customer/{id}")
-    public void addMainPhoto(@PathVariable int id, @RequestParam MultipartFile photo) throws IOException {
-        customerServices.addMainPhoto(id, photo);
+    @PutMapping("customer/{customerId}")
+    public void addMainPhoto(@PathVariable int customerId, @RequestParam MultipartFile photo) throws IOException {
+        customerServices.addMainPhoto(customerId, photo);
     }
 
-    @PutMapping("customer/{id}/update")
-    public void updateCustomer(@PathVariable int id, @RequestBody Customer customer) {
-        customerServices.updateCustomer(id,customer);
+    @PutMapping("customer/{customerId}/update")
+    public void updateCustomer(@PathVariable int customerId, @RequestBody Customer customer) {
+        customerServices.updateCustomer(customerId,customer);
     }
 }

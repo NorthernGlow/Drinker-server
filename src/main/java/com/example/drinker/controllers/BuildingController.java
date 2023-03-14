@@ -20,28 +20,28 @@ public class BuildingController {
 
     private BuildingService buildingService;
 
-    @PostMapping("customer/{id}/addBuilding")
-    public void saveBuilding(@RequestBody @Validated Building building) throws Exception {
-        buildingService.saveBuilding(building);
+    @PostMapping("customer/{customerId}/addBuilding")
+    public int saveBuilding(@RequestBody @Validated Building building) throws Exception {
+       return buildingService.saveBuilding(building);
     }
 
-    @PutMapping("building/{id}")
-    public void addBuildingMainPhoto(@PathVariable int id, @RequestParam MultipartFile photo) throws IOException {
-        buildingService.saveBuildingMainPhoto(id, photo);
+    @PutMapping("building/{buildId}")
+    public void addBuildingMainPhoto(@PathVariable int buildId, @RequestParam MultipartFile photo) throws IOException {
+        buildingService.saveBuildingMainPhoto(buildId, photo);
     }
 
-    @GetMapping("customer/drinks/{id}")
-    public List<BuildingDTO> getBuildById(@PathVariable int id) {
-        return buildingService.getBuildById(id);
+    @GetMapping("customer/drinks/{buildId}")
+    public List<BuildingDTO> getBuildById(@PathVariable int buildId) {
+        return buildingService.getBuildById(buildId);
     }
 //    @GetMapping("customer/drinks/{id}/location")
 //    public Location getBuildLocationById(@PathVariable int id) {
 //        return buildingService.getLocationBuildById(id);
 //    }
 
-    @GetMapping("customer/{id}/allBuilding")
-    public List<BuildingDTO> getBuildByCustomerId(@PathVariable int id) {
-        return buildingService.getBuildByCustomerId(id);
+    @GetMapping("customer/{customerId}/allBuilding")
+    public List<BuildingDTO> getBuildByCustomerId(@PathVariable int customerId) {
+        return buildingService.getBuildByCustomerId(customerId);
     }
 
     @GetMapping("customer/drinks/all")
@@ -49,8 +49,8 @@ public class BuildingController {
         return buildingService.getAllBuild();
     }
 
-    @PutMapping("customer/drinks/{id}")
-    public float rating(@PathVariable int id, @RequestBody float value){
-        return buildingService.rating(id,value);
+    @PutMapping("customer/drinks/{buildId}")
+    public float rating(@PathVariable int buildId, @RequestBody float value){
+        return buildingService.rating(buildId,value);
     }
 }
