@@ -44,11 +44,12 @@ public class BuildingService {
         return buildingDAO.findById(id).stream().map(BuildingDTO::new).collect(Collectors.toList());
     }
 
-//    public Location getLocationBuildById(int id){
-//        Location location = buildingDAO.findById(id).get().getLocation();
-//        System.out.println(location);
-//        return location;
-//    }
+    //НЕ ПРАЦЮЄ
+    public Location getLocationBuildById(int id){
+        Location location = buildingDAO.findById(id).get().getLocation();
+        System.out.println(location);
+        return location;
+    }
 
 
     public List<BuildingDTO> getBuildByCustomerId(int id){

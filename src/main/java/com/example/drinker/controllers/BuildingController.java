@@ -34,10 +34,12 @@ public class BuildingController {
     public List<BuildingDTO> getBuildById(@PathVariable int buildId) {
         return buildingService.getBuildById(buildId);
     }
-//    @GetMapping("customer/drinks/{id}/location")
-//    public Location getBuildLocationById(@PathVariable int id) {
-//        return buildingService.getLocationBuildById(id);
-//    }
+
+    //НЕ ПРАЦЮЄ
+    @GetMapping("customer/drinks/{id}/location")
+    public Location getBuildLocationById(@PathVariable int id) {
+        return buildingService.getLocationBuildById(id);
+    }
 
     @GetMapping("customer/{customerId}/allBuilding")
     public List<BuildingDTO> getBuildByCustomerId(@PathVariable int customerId) {

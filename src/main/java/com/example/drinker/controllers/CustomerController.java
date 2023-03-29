@@ -1,6 +1,7 @@
 package com.example.drinker.controllers;
 
 import com.example.drinker.models.Customer;
+import com.example.drinker.models.Location;
 import com.example.drinker.services.CustomerServices;
 import lombok.AllArgsConstructor;
 import org.springframework.validation.annotation.Validated;
@@ -30,6 +31,7 @@ public class CustomerController {
         return customerServices.getCustomerById(customerId);
     }
 
+
     @PutMapping("customer/{customerId}")
     public void addMainPhoto(@PathVariable int customerId, @RequestParam MultipartFile photo) throws IOException {
         customerServices.addMainPhoto(customerId, photo);
@@ -39,4 +41,6 @@ public class CustomerController {
     public void updateCustomer(@PathVariable int customerId, @RequestBody Customer customer) {
         customerServices.updateCustomer(customerId,customer);
     }
+
+
 }
