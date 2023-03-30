@@ -44,8 +44,8 @@ public class Building {
 //    @ToString.Exclude
     private Location location;
 
-    @OneToMany(mappedBy = "building",cascade = CascadeType.ALL)
-    private List<BuildingPhoto> photos;
+//    @OneToMany(mappedBy = "building",cascade = CascadeType.ALL)
+//    private List<BuildingPhoto> photos;
 
     public Building(int customerId, String name, String averageCheck, String schedule, String phone, Teg teg, Specifics specifics, Location location) {
         this.customerId = customerId;
