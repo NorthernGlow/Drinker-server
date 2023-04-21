@@ -40,17 +40,9 @@ public class BuildingService {
         buildingDAO.save(build);
     }
 
-    public List<BuildingDTO> getBuildById(int id){
-        return buildingDAO.findById(id).stream().map(BuildingDTO::new).collect(Collectors.toList());
+    public Building getBuildById(int id){
+        return  buildingDAO.findById(id).orElseThrow();
     }
-
-    //НЕ ПРАЦЮЄ
-    public Location getLocationBuildById(int id){
-        Location location = buildingDAO.findById(id).get().getLocation();
-        System.out.println(location);
-        return location;
-    }
-
 
     public List<BuildingDTO> getBuildByCustomerId(int id){
         return buildingDAO.findByCustomerId(id).stream().map(BuildingDTO::new).collect(Collectors.toList());
@@ -58,6 +50,10 @@ public class BuildingService {
 
     public List<BuildingDTO> getAllBuild(){
         return buildingDAO.findAll().stream().map(BuildingDTO::new).collect(Collectors.toList());
+    }
+
+    public List<BuildingDTO> getBuildsByName(String name){
+        return buildingDAO.findByName(name).stream().map(BuildingDTO::new).collect(Collectors.toList());
     }
 
     public float rating(int id, float value){

@@ -34,7 +34,7 @@ public class Building {
 //    @ToString.Exclude
     private Teg teg;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "specifics_id", referencedColumnName = "id")
 //    @ToString.Exclude
     private Specifics specifics;

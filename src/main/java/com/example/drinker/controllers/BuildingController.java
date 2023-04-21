@@ -1,16 +1,17 @@
 package com.example.drinker.controllers;
 
 import com.example.drinker.models.Building;
-import com.example.drinker.models.Location;
+import com.example.drinker.models.dto.Building2DTO;
 import com.example.drinker.models.dto.BuildingDTO;
 import com.example.drinker.services.BuildingService;
 import lombok.AllArgsConstructor;
+import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 @AllArgsConstructor
@@ -18,6 +19,8 @@ import java.util.List;
 @CrossOrigin
 public class BuildingController {
 
+    @Autowired
+    private ModelMapper modelMapper;
     private BuildingService buildingService;
 
     @PostMapping("customer/{customerId}/addBuilding")
@@ -31,14 +34,10 @@ public class BuildingController {
     }
 
     @GetMapping("customer/drinks/{buildId}")
-    public List<BuildingDTO> getBuildById(@PathVariable int buildId) {
-        return buildingService.getBuildById(buildId);
-    }
-
-    //НЕ ПРАЦЮЄ
-    @GetMapping("customer/drinks/{id}/location")
-    public Location getBuildLocationById(@PathVariable int id) {
-        return buildingService.getLocationBuildById(id);
+    public Building2DTO getBuildById(@PathVariable int buildId) {
+        Building building = buildingService.getBuildById(buildId);
+        Building2DTO map = modelMapper.map(building, Building2DTO.class);
+        return map;
     }
 
     @GetMapping("customer/{customerId}/allBuilding")
@@ -49,6 +48,11 @@ public class BuildingController {
     @GetMapping("customer/drinks/all")
     public List<BuildingDTO> getAllBuilding() {
         return buildingService.getAllBuild();
+    }
+
+    @GetMapping("customer/drinks/searchBuild/{name}")
+    public List<BuildingDTO> getBuildsByName(@PathVariable String name){
+        return buildingService.getBuildsByName(name);
     }
 
     @PutMapping("customer/drinks/{buildId}")
